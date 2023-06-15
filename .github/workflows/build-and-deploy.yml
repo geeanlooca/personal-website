@@ -1,0 +1,23 @@
+on:
+    push:
+        branches:
+            - master
+
+
+jobs:
+    build_and_deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: set up repo
+              uses: actions/checkout@v3
+            - name: install node and npm
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.3.0
+            - name: install dependencies
+              run: npm install
+            - name: build
+              run: npm run build
+
+            
+            
