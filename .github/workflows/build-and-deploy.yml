@@ -18,6 +18,15 @@ jobs:
               run: npm install
             - name: build
               run: npm run build
+            - name: deploy using ssh
+              uses: garygrossgarten/github-action-scp@release
+              with:
+                local: _site/
+                remote: /home/${{ secrets.USERNAME }}/public_html
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                key: ${{ secrets.PRIVATE_KEY }}
+                args: -r
 
             
             
