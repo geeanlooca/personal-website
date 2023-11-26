@@ -25,7 +25,8 @@ jobs:
                 remote: /home/${{ secrets.USERNAME }}/public_html
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
-                privateKey: ${{ secrets.PRIVATE_KEY }}
+                # privateKey: ${{ secrets.PRIVATE_KEY }}
+                password: ${{ secrets.PASSWORD }}
 
             
             
