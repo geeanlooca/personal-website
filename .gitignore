@@ -1,5 +1,6 @@
 _site/
-
+public/
+node_modules/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/node
