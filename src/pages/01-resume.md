@@ -3,7 +3,7 @@ title: Résumé
 ---
 
 # Experience
-**Apr. 2022 - Current**: R&D Engineer, Visia Imaging - Topcon group, Arezzo, Italy
+**Apr. 2022 - Current**: R&D Software Engineer, Visia Imaging - Topcon group, Arezzo, Italy
 
 **Oct. 2021 - Mar. 2022**: Post-doc researcher, University of Padova
 
