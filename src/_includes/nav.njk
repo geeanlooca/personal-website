@@ -7,7 +7,7 @@
     </li>
 
     {% for page in collections.nav|sort(attribute='url')%}
-    <h1> {{ page.title }} </h1>
+    {# <h1> {{ page.title }} </h1> #}
     <li>
       <a 
         {% if currentUrl === page.url %}aria-current="page"{% endif %} 
@@ -16,5 +16,7 @@
       </a>
     </li>
     {%- endfor %}
+    
+    <li id="#theme-switch"> {% include "theme-switch.njk" %} </li>
   </ul>
 </nav>
