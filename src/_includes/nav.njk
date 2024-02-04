@@ -6,7 +6,8 @@
       <a {% if currentUrl === '/' %}aria-current="page"{% endif %} href="/">Home</a>
     </li>
 
-    {% for page in collections.pages %}
+    {% for page in collections.nav|sort(attribute='url')%}
+    <h1> {{ page.title }} </h1>
     <li>
       <a 
         {% if currentUrl === page.url %}aria-current="page"{% endif %} 
