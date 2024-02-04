@@ -66,8 +66,8 @@ Publications derived from this project:
 # **LastTip**
 This is a fun little project that was born with me realizing that the music obsessed person that I once was, the one that would spend nights searching for obscure bands and new genres, has been replaced by the Spotify algorithm. With this, a lot of the music that I once listened to has been left aside collecting digital dust. Fortunately, I have been tracking all the music I listen to on [last.fm](https://last.fm/) since 2009 (actually a few years earlier, but stupid me decided he didn't identify with a metalhead teenager anymore, and made a new account).
 
-The solution I came up with was a [Flask](https://flask.palletsprojects.com/en/3.0.x/) application that would fetch albums from my last.fm profile and gave me back a random suggestion, along with a Spotify link to the suggested album. I then built a Telegram bot that talks to the API I built to get reccomendations directly from Telegram, for convenience.
-Later, I added the option to also get reccomendations from the list of albums saved in my Spotify account, as I realized that most of the interesting stuff I discover gets added to my library and promptly forgotten.
+The solution I came up with was a [Flask](https://flask.palletsprojects.com/en/3.0.x/) application that would fetch albums from my last.fm profile and gave me back a random suggestion, along with a Spotify link to the suggested album. I then built a Telegram bot that talks to the API I built to get recommendations directly from Telegram, for convenience.
+Later, I added the option to also get recommendations from the list of albums saved in my Spotify account, as I realized that most of the interesting stuff I discover gets added to my library and promptly forgotten.
 
 Get some recommendations at [this link](https://lasttip.gianlucamarcon.com). Or go directly to my [last.fm profile](https://last.fm/user/FireIsTheLeader).
 
