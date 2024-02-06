@@ -1,7 +1,7 @@
 ---
 title: Résumé
 tags: nav
-permalink: cv
+permalink: cv/
 ---
 
 

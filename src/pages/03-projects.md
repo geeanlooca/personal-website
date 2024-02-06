@@ -1,7 +1,7 @@
 ---
 title: Projects
 tags: nav
-permalink: projects
+permalink: projects/
 ---
 
 Here is a compilation of my personal projects, created for various reasons—whether for enjoyment, academic pursuits, or a blend of both.
