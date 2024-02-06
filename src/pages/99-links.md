@@ -1,6 +1,7 @@
 ---
 title: Links
 tags: nav
+permalink: links
 ---
 
 - Source code for most of the stuff I do on [GitHub](https://github.com/geeanlooca)
