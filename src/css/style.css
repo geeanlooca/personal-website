@@ -9,11 +9,13 @@
 [data-theme="dark"] {
   --color-bg: #222;
   --color-fg: #eee;
+  --link-color: rgb(64, 142, 187);
 }
 
 [data-theme="light"] {
   --color-bg: #eee;
   --color-fg: #222;
+  --link-color: #366ab3
 }
 
 body {
@@ -89,7 +91,7 @@ article * + * {
 }
 
 a {
-  color: rgb(64, 142, 187);
+  color: var(--link-color);
   text-underline-offset: 0.08em;
 }
 
