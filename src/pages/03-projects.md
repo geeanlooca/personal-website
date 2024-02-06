@@ -5,6 +5,7 @@ tags: nav
 
 Here is a compilation of my personal projects, created for various reasons—whether for enjoyment, academic pursuits, or a blend of both.
 
+---
 
 # **Convolutional and Turbo Codes for deep-space communications**
 A C implementation of the [CCSDS](https://public.ccsds.org/default.aspx) (Consultative Committee for Space Data Systems) standard for [Turbo Codes](https://en.wikipedia.org/wiki/Turbo_code), a class of high-performance error-correction codes used in deep-space communications.
@@ -13,6 +14,7 @@ A few programs and scripts to benchmark them are also included.
 
 The source code is available on [GitHub](https://github.com/geeanlooca/deepspace-turbo) along with some benchmark results.
 
+---
 
 # **Wireless MAC protocols simulator**
 The scope of this project is to compare different channel access policies in wireless networks.
@@ -23,6 +25,7 @@ A fun project that covers a lot of different topics: software engineering, numer
 
 Source code and report available on [GitHub](https://github.com/geeanlooca/wsn-simulator).
 
+---
 
 # **YouTube video summarizer**
 A classic example of engineers turning a 10-minute task into a 3-hour job. An interesting video popped up in my YouTube feed, but I quickly realized that the simple topic it was supposed to cover was drawn out for an eternity: all I wanted was a quick summary. Inspired by the army of [e/acc](https://en.wikipedia.org/wiki/Effective_accelerationism) accounts on my ~~Twitter~~ X feed, I wanted to get my feet wet with [LLMs](https://en.wikipedia.org/wiki/Large_language_model) and some AI tools, so I took the opportunity to load some credits (read: $) in my OpenAI account, download a local version of [Whisper](https://en.wikipedia.org/wiki/Whisper_(speech_recognition_system)) ([whisper.cpp](https://github.com/ggerganov/whisper.cpp) developed by the great [Georgi Gerganov](https://twitter.com/ggerganov)) and start building a system that summarizes YouTube videos.
@@ -30,6 +33,8 @@ The approach is fairly simple: using [`yt-dlp`]( https://github.com/yt-dlp/yt-dl
 I am experimenting with local models to replace ChatGPT (mainly Llama-2), but running them on an old CPU results in very low tokens/sec.
 
 Source code on [GitHub](https://github.com/geeanlooca/ai-youtube-summarizer).
+
+---
 
 # **Numerical solver for space-division-multiplexed optical fiber transmission**
 Project done for my PhD program involving the simulation of light transmission in [few-mode optical fibers](https://www.rp-photonics.com/few_mode_fibers.html) under the effect of [optical nonlinearities](https://www.rp-photonics.com/tutorial_passive_fiber_optics11.html), namely Kerr and Raman amplification.
@@ -52,6 +57,8 @@ Finally, the code is packaged and run on a HPC cluster using [Singularity contai
 
 Source code available on [GitHub](https://github.com/geeanlooca/sdm-propane).
 
+---
+
 
 # **PyNLIN**
 Also related to the topic of optical fibers. A pure Python implementation of some mathematical models for the computation of the nonlinear interference noise accumulating during the transmission of light in optical fibers. Code is automatically dockerized and Singularity-ized (?) in the CI/CD pipeline, and pushed to GitHub's container registry. It is then a lot easier in the HPC environment to simply pull the image and run it, instead of building it locally without root access, or, even worse, building it on my personal machine and uploading gigabytes of data with my sub-par internet connection.
@@ -62,6 +69,8 @@ Publications derived from this project:
 
 1. F. Lorenzi, G. Marcon et al., ["Model for Nonlinear Interference Noise in Raman-amplified WDM Systems,"](https://ieeexplore.ieee.org/abstract/document/9979292/metrics#metrics) 2022 European Conference on Optical Communication (ECOC), Basel, Switzerland, 2022, pp. 1-4
 2. F. Lorenzi, G. Marcon et al., ["Nonlinear Interference Noise in Raman-Amplified WDM Systems,"](https://doi.org/10.1109/JLT.2023.3287650) in Journal of Lightwave Technology, vol. 41, no. 20, pp. 6465-6473, 15 Oct.15, 2023
+
+---
 
 # **LastTip**
 This is a fun little project that was born with me realizing that the music obsessed person that I once was, the one that would spend nights searching for obscure bands and new genres, has been replaced by the Spotify algorithm. With this, a lot of the music that I once listened to has been left aside collecting digital dust. Fortunately, I have been tracking all the music I listen to on [last.fm](https://last.fm/) since 2009 (actually a few years earlier, but stupid me decided he didn't identify with a metalhead teenager anymore, and made a new account).
