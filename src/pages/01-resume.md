@@ -32,11 +32,11 @@ marcon.gluca[at]gmail.com â‹… <a href=https://github.com/geeanlooca>GitHub</a> â
 ---
 
 # Projects
-Have a look at the [Projects](/03-projects) page!
+Have a look at the [Projects](/03-projects/) page!
 
 
 ---
 # Publications
 
-You can find the list of my scientific publications [at this link](/02-publications).
+You can find the list of my scientific publications [at this link](/02-publications/).
 
