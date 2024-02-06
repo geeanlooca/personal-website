@@ -1,7 +1,7 @@
 ---
+layout: page.njk
 title: Publications
 tags: nav
-permalink: publications/
 ---
 
 My citations can be found on [Google Scholar](https://scholar.google.it/citations?user=SlXFdE4AAAAJ&hl=en).
