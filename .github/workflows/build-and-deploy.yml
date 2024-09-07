@@ -31,7 +31,7 @@ jobs:
               env:
                 TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
               run: |
-                curl -H "Authorization: token ${TOKEN}" https://github.com/geeanlooca/cv/releases/latest/download/cv.pdf
+                echo ${TOKEN} && curl -H "Authorization: token ${TOKEN}" https://github.com/geeanlooca/cv/releases/latest/download/cv.pdf
             - name: copy pdf
               uses: garygrossgarten/github-action-scp@release
               with:
