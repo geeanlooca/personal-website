@@ -31,11 +31,11 @@ jobs:
               env:
                 TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
               run: |
-                echo ${TOKEN} && curl -H "Authorization: token ${TOKEN}" https://github.com/geeanlooca/cv/releases/latest/download/cv.pdf
+                wget -q --header="Authorization: token ${TOKEN}" https://github.com/geeanlooca/cv/releases/latest/download/cv.pdf -O cv.pdf
             - name: copy pdf
               uses: garygrossgarten/github-action-scp@release
               with:
-                local: cv.pdf
+                local: ./cv.pdf
                 remote: /home/${{ secrets.USERNAME }}/public_html/cv.pdf
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
