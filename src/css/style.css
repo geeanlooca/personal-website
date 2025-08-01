@@ -31,7 +31,7 @@ body {
 
 body > * {
   --layout-spacing: max(4vh, 2rem);
-  --max-width: 100ch;
+  --max-width: 90ch;
   width: min(100%, var(--max-width));
   margin-left: auto;
   margin-right: auto;
