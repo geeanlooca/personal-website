@@ -12,7 +12,7 @@ marcon.gluca[at]gmail.com â‹… <a href=https://github.com/geeanlooca>GitHub</a> â
 ---
 # Experience
 
-- **Sep. 2024 - Current**: Project Engineer @ Signal Intelligence Division, QASCOM Srl, Bassano del Grappa, Italy
+- **Sep. 2024 - Current**: Signal Intelligence Project Engineer, QASCOM Srl, Bassano del Grappa, Italy
 - **Apr. 2022 - Aug. 2024**: R&D Software Engineer, Visia Imaging - Topcon group, Arezzo, Italy
 - **Oct. 2021 - Mar. 2022**: Post-doc researcher, University of Padova
 - **May 2021 - Aug. 2021**: Visiting researcher, University of Bern, Switzerland
