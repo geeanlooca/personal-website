@@ -27,19 +27,4 @@ jobs:
                 username: ${{ secrets.USERNAME }}
                 # privateKey: ${{ secrets.PRIVATE_KEY }}
                 password: ${{ secrets.PASSWORD }}
-            - name: download latest cv in pdf version
-              env:
-                TOKEN: ${{ secrets.PAT_REPO_ACCESS }}
-              run: |
-                wget -q --header="Authorization: token ${TOKEN}" https://github.com/geeanlooca/cv/releases/latest/download/cv.pdf -O cv.pdf
-            - name: copy pdf
-              uses: garygrossgarten/github-action-scp@release
-              with:
-                local: ./cv.pdf
-                remote: /home/${{ secrets.USERNAME }}/public_html/cv.pdf
-                host: ${{ secrets.HOST }}
-                username: ${{ secrets.USERNAME }}
-                # privateKey: ${{ secrets.PRIVATE_KEY }}
-                password: ${{ secrets.PASSWORD }}
-            
             
