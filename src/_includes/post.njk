@@ -1,0 +1,29 @@
+---
+layout: base.njk
+---
+
+<header>
+  <h1>{{ title }}</h1>
+  <div class="post-meta">
+    <time datetime="{{ date }}">{{ date.toDateString() }}</time>
+    {% if tags %}
+      <div class="post-tags">
+        {% for tag in tags %}
+          {% if tag != "posts" %}
+            <span class="tag">#{{ tag }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</header>
+
+<main>
+  <article>
+    {{ content | safe }}
+  </article>
+  
+  <nav class="post-nav">
+    <a href="/blog/">← Back to all posts</a>
+  </nav>
+</main>
