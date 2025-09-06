@@ -142,6 +142,34 @@ blockquote {
 }
 
 
+/* Prevent icon flash before FontAwesome loads */
+.theme-switch .fa-sun,
+.theme-switch .fa-moon {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  text-align: center;
+}
+
+/* Fallback icons using Unicode before FontAwesome loads */
+.theme-switch .fa-moon::before {
+  content: "🌙";
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.theme-switch .fa-sun::before {
+  content: "☀️";
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+/* When FontAwesome loads, it will override these */
+.fa-moon.fas::before,
+.fa-sun.fas::before {
+  font-family: "Font Awesome 5 Free";
+}
+
 /* Theme Switch Styles */
 .theme-switch {
   background: none;
@@ -168,32 +196,42 @@ blockquote {
   outline-offset: 2px;
 }
 
-/* Icon positioning */
-.theme-switch .fa-sun,
-.theme-switch .fa-moon {
+
+/* FontAwesome icons directly in CSS - no loading delay */
+.theme-icon {
   position: absolute;
   font-size: 1.1rem;
   transition: opacity 0.2s ease, transform 0.2s ease;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.theme-icon-moon::before {
+  content: "\f186"; /* FontAwesome moon Unicode */
+}
+
+.theme-icon-sun::before {
+  content: "\f185"; /* FontAwesome sun Unicode */
 }
 
 /* Dark theme: show moon, hide sun */
-[data-theme="dark"] .theme-switch .fa-moon {
+[data-theme="dark"] .theme-switch .theme-icon-moon {
   opacity: 1;
   transform: rotate(0deg);
 }
 
-[data-theme="dark"] .theme-switch .fa-sun {
+[data-theme="dark"] .theme-switch .theme-icon-sun {
   opacity: 0;
   transform: rotate(180deg);
 }
 
 /* Light theme: show sun, hide moon */
-[data-theme="light"] .theme-switch .fa-sun {
+[data-theme="light"] .theme-switch .theme-icon-sun {
   opacity: 1;
   transform: rotate(0deg);
 }
 
-[data-theme="light"] .theme-switch .fa-moon {
+[data-theme="light"] .theme-switch .theme-icon-moon {
   opacity: 0;
   transform: rotate(-180deg);
 }
