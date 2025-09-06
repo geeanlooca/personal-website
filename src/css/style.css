@@ -153,13 +153,13 @@ blockquote {
 
 /* Fallback icons using Unicode before FontAwesome loads */
 .theme-switch .fa-moon::before {
-  content: "🌙";
+  content: " ";
   font-family: system-ui, sans-serif;
   font-size: 1rem;
 }
 
 .theme-switch .fa-sun::before {
-  content: "☀️";
+  content: " ️";
   font-family: system-ui, sans-serif;
   font-size: 1rem;
 }
