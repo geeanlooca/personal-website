@@ -2,6 +2,8 @@
 layout: page.njk
 title: Links
 tags: nav
+navOrder: 4
+permalink: "/links/"
 ---
 
 - Source code for most of the stuff I do on [GitHub](https://github.com/geeanlooca)

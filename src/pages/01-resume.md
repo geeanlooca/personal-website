@@ -2,6 +2,8 @@
 layout: page.njk
 title: Résumé
 tags: nav
+navOrder: 1
+permalink: "/resume/"
 ---
 
 

@@ -1,17 +1,44 @@
-<button type="button" class="theme-icon">
-  <i
-    aria-hidden="true"
-    class="fas fa-moon"
-    title=""
-  ></i>
-  <i
-    aria-hidden="true"
-    class="fas fa-sun"
-    title=""
-  ></i>
-  <span class="sr-only"></span>
+<button type="button" class="theme-switch" aria-label="Toggle theme">
+  <i aria-hidden="true" class="fas fa-moon"></i>
+  <i aria-hidden="true" class="fas fa-sun"></i>
+  <span class="sr-only">Toggle between light and dark themes</span>
 </button>
 
-<script type="text/javascript">
-  {% include "src/_includes/theme-switch.js" %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const themeSwitch = document.querySelector('.theme-switch');
+  
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+  }
+  
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update aria-label for accessibility
+    const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    themeSwitch.setAttribute('aria-label', label);
+  }
+  
+  // Set initial aria-label
+  const currentTheme = getCurrentTheme();
+  const initialLabel = currentTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+  themeSwitch.setAttribute('aria-label', initialLabel);
+  
+  // Handle theme toggle
+  themeSwitch.addEventListener('click', function() {
+    const current = getCurrentTheme();
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+  
+  // Handle keyboard navigation
+  themeSwitch.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      themeSwitch.click();
+    }
+  });
+});
 </script>

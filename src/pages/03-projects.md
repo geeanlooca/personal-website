@@ -2,6 +2,8 @@
 layout: page.njk
 title: Projects
 tags: nav
+navOrder: 3
+permalink: "/projects/"
 ---
 
 Here is a compilation of my personal projects, created for various reasons—whether for enjoyment, academic pursuits, or a blend of both.

@@ -8,6 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}{% if page.url != '/' %} | {{ meta.siteName }}{% endif %}</title>
   <link type='text/css' href="{{ '/_includes/theme-switch.css' | url }}">
+
+  <script>
+    (function() {
+      const storedTheme = localStorage.getItem("theme");
+      const theme = storedTheme || "dark";
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
 </head>
 <body>
   {% include "nav.njk" %}
@@ -16,7 +24,7 @@
 
   <footer>
     <div>
-      <p>&copy; {% year %} {{ meta.siteName }}{% if meta.authorName %} • {{ meta.authorName }}{% endif %}</p>
+          <p>&copy; {% year %} {{ meta.siteName }}{% if meta.authorName %} • {{ meta.authorName }}{% endif %}</p>
     </div>
   </footer>
 

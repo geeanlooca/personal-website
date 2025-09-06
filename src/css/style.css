@@ -46,6 +46,7 @@ nav ul {
   margin-left: -1rem;
   margin-right: -1rem;
   justify-content: center;
+  align-items: center;
 }
 
 nav ul li {
@@ -55,6 +56,8 @@ nav ul li {
 nav [aria-current="page"] {
   font-weight: bold;
 }
+
+
 
 header,
 main,
@@ -138,14 +141,72 @@ blockquote {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
-#theme-switch{
-  /* align right */
-  float: right;
+
+/* Theme Switch Styles */
+.theme-switch {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-fg);
 }
 
-.theme-icon {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  border: none;
-  
+.theme-switch:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.theme-switch:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/* Icon positioning */
+.theme-switch .fa-sun,
+.theme-switch .fa-moon {
+  position: absolute;
+  font-size: 1.1rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Dark theme: show moon, hide sun */
+[data-theme="dark"] .theme-switch .fa-moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+[data-theme="dark"] .theme-switch .fa-sun {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+/* Light theme: show sun, hide moon */
+[data-theme="light"] .theme-switch .fa-sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+[data-theme="light"] .theme-switch .fa-moon {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
