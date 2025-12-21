@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,7 +34,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 8vh clamp(2rem, 8vw, 8rem) 3rem;
-  font-family: "Palatino Linotype", Palatino, Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+  /* font-family: "Palatino Linotype", Palatino, Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif; */
+  font-family: "EB Garamond", Palatino, "Palatino Linotype", Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
   font-size: 18px;
   line-height: 1.6;
   color: var(--color-fg);
