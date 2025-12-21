@@ -3,7 +3,8 @@ title: Hi, I'm Gianluca
 layout: page.njk
 ---
 
-## {{ meta.siteDescription }}
+# Hi, I am <span style="color: var(--accent-color);">Gianluca Marcon</span>. 
+Welcome to my personal website
 
 For now, you can find my [résumé](/resume/) and list of [publications](/publications/), along with some of my [projects](/projects/). 
 
