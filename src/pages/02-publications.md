@@ -6,9 +6,7 @@ navOrder: 2
 permalink: "/publications/"
 ---
 
-My citations can be found on [Google Scholar](https://scholar.google.it/citations?user=SlXFdE4AAAAJ&hl=en).
 
----
 
 # Theses
 
@@ -38,3 +36,6 @@ My citations can be found on [Google Scholar](https://scholar.google.it/citation
 [8] **G. Marcon**, A. Galtarossa, L. Palmieri, and M. Santagiustina, [“Gain design of few-mode fiber Raman amplifiers using an autoencoder-based machine learning approach,”](https://ieeexplore.ieee.org/document/9333401) in 2020 European Conference on Optical Communications (ECOC), IEEE, 2020, pp. 1–4.
 
 [9] **G. Marcon**, A. Galtarossa, L. Palmieri, and M. Santagiustina, [“Model-aware deep learning method for Raman amplification in few-mode fibers,”](https://ieeexplore.ieee.org/document/9244561) Journal of Lightwave Technology, vol. 39, no. 5, pp. 1371–1380, 2020.
+
+---
+My citations can be found on [Google Scholar](https://scholar.google.it/citations?user=SlXFdE4AAAAJ&hl=en).

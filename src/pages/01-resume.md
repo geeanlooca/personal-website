@@ -6,6 +6,9 @@ navOrder: 1
 permalink: "/resume/"
 ---
 
+[Contact](/contacts/) me for a detailed cv.
+
+
 
 # Experience
 
