@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <script src="https://kit.fontawesome.com/2d42141d24.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}{% if page.url != '/' %} | {{ meta.siteName }}{% endif %}</title>
-  <link type='text/css' href="{{ '/_includes/theme-switch.css' | url }}">
-
   <script>
     (function() {
-      const storedTheme = localStorage.getItem("theme");
-      const theme = storedTheme || "dark";
+      var storedTheme = localStorage.getItem("theme");
+      var theme = storedTheme || "dark";
       document.documentElement.setAttribute("data-theme", theme);
     })();
   </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+  <title>{{ title }}{% if page.url != '/' %} | {{ meta.siteName }}{% endif %}</title>
+  <script src="https://kit.fontawesome.com/2d42141d24.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <script>
+    requestAnimationFrame(function() {
+      document.documentElement.classList.add("transitions-ready");
+    });
+  </script>
   {% include "nav.njk" %}
 
   {{ content | safe }}

@@ -5,6 +5,14 @@
   margin: 0;
 }
 
+/* Transitions only after page is ready (prevents flicker on navigation) */
+html.transitions-ready,
+html.transitions-ready body,
+html.transitions-ready body > *,
+html.transitions-ready .theme-icon {
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
 /* Color Themes */
 [data-theme="dark"] {
   --color-bg: #000000;
@@ -44,7 +52,6 @@ body {
   line-height: 1.6;
   color: var(--color-fg);
   background-color: var(--color-bg);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body > * {
@@ -70,6 +77,11 @@ nav ul {
 
 nav ul li {
   padding: 0.5rem 0;
+}
+
+nav li.theme-switch-li {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
@@ -258,6 +270,7 @@ blockquote p {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-family: "Font Awesome 5 Free";
   font-weight: 900;

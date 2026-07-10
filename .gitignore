@@ -1,6 +1,7 @@
 _site/
 public/
 node_modules/
+oc-box/
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/node
