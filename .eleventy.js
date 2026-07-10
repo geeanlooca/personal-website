@@ -3,6 +3,7 @@ const crypto = require("crypto");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/css/");
+  eleventyConfig.addPassthroughCopy("./src/favicon.svg");
   eleventyConfig.addWatchTarget("./src/css/");
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   eleventyConfig.addShortcode("cssVersion", () => {

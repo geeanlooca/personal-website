@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Gianluca Marcon — GM monogram as a laser pulse</title>
+  <text x="16" y="36" text-anchor="middle" dominant-baseline="central"
+        font-family="'EB Garamond', Georgia, 'Times New Roman', serif" font-size="30" font-weight="600" fill="#cc6699">G</text>
+  <path d="M32 54 C37 54 39 10 45 10 C51 10 53 54 58 54"
+        fill="none" stroke="#cc6699" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M36 54 C40 54 42 28 48 28"
+        fill="none" stroke="#cc6699" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+</svg>
