@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphics Draft — gianlucamarcon.com</title>
+<style>
+  :root { --color-bg:#000; --color-fg:#fff; --color-muted:#a0a0a0; --color-border:#333; --link-color:#fff; --link-hover:#ccc; --accent-color:#cc6699; --code-bg:#1a1a1a; }
+  [data-theme="light"] { --color-bg:#fff; --color-fg:#000; --color-muted:#666; --color-border:#e0e0e0; --link-color:#000; --link-hover:#333; --accent-color:#660033; --code-bg:#f5f5f5; }
+  * { box-sizing:border-box; margin:0; }
+  body { display:flex; flex-direction:column; min-height:100vh; padding:8vh clamp(2rem,8vw,8rem) 3rem; font-family:"EB Garamond",Palatino,"Palatino Linotype",Baskerville,serif; font-size:18px; line-height:1.6; color:var(--color-fg); background-color:var(--color-bg); }
+  main { max-width:75ch; margin:0 auto; width:100%; }
+  main > * + * { margin-top:1.2em; }
+  h1 { font-size:2.5rem; font-weight:400; line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.5em; max-width:40ch; }
+  h2 { font-size:1.8rem; font-weight:400; line-height:1.2; letter-spacing:-0.02em; margin-top:2em; max-width:40ch; }
+  h3 { font-size:1.4rem; font-weight:400; line-height:1.2; letter-spacing:-0.02em; margin-top:1.8em; }
+  :is(h2,h3):not(:first-child) { margin-top:2.5em; }
+  p { text-align:justify; hyphens:auto; }
+  a { color:var(--link-color); text-decoration:underline; }
+  a:hover { color:var(--accent-color); }
+  hr { border:none; margin:2.5rem 0; }
+
+  /* --- Graphic wrappers --- */
+  .graphic { display:block; margin:2rem auto; max-width:100%; }
+  .graphic.wide { max-width:520px; }
+  .graphic.inline-r { float:right; margin:0 0 1rem 1.5rem; width:140px; }
+  .graphic.inline-l { float:left; margin:0 1.5rem 1rem 0; width:140px; }
+  .graphic svg { width:100%; height:auto; display:block; }
+  .graphic .stroke-accent { stroke:var(--accent-color); }
+  .graphic .stroke-muted { stroke:var(--color-muted); }
+  .graphic .fill-accent { fill:var(--accent-color); }
+  .graphic .fill-muted { fill:var(--color-muted); }
+  .graphic-label { font-size:0.7rem; color:var(--color-muted); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.4rem; text-align:center; font-family:-apple-system,system-ui,sans-serif; }
+
+  @media (max-width: 768px) {
+    .graphic.inline-r, .graphic.inline-l { float:none; margin:1.5rem auto; width:180px; }
+  }
+
+  /* Page separator */
+  .page-break { border-top:1px dashed var(--color-border); margin:5rem 0 2rem; padding-top:1rem; }
+  .page-break-label { font-size:0.75rem; font-family:-apple-system,system-ui,sans-serif; color:var(--color-muted); text-transform:uppercase; letter-spacing:0.1em; }
+
+  /* Theme toggle */
+  .toggle { position:fixed; top:1rem; right:1rem; z-index:100; background:var(--code-bg); border:1px solid var(--color-border); border-radius:6px; padding:0.5rem 1rem; cursor:pointer; color:var(--color-fg); font-family:-apple-system,system-ui,sans-serif; font-size:0.8rem; }
+
+  /* --- Animations --- */
+  @keyframes signal-radiate {
+    0% { r: 4; opacity: 0.9; }
+    100% { r: 28; opacity: 0; }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; r: 3; }
+    50% { opacity: 1; r: 5; }
+  }
+  @keyframes wave-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-40px); }
+  }
+  @keyframes pulse-broaden {
+    0% { transform: scaleX(0.3); opacity: 0.8; }
+    50% { transform: scaleX(1.5); opacity: 0.3; }
+    100% { transform: scaleX(3); opacity: 0; }
+  }
+  @keyframes dash-flow {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -20; }
+  }
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes mode-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.9; }
+  }
+  @keyframes float-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .anim-pulse-dot { animation: pulse-glow 2.5s ease-in-out infinite; }
+  .anim-wave-drift { animation: wave-drift 6s linear infinite; }
+  .anim-signal-ring-1 { animation: signal-radiate 3s ease-out infinite; }
+  .anim-signal-ring-2 { animation: signal-radiate 3s ease-out infinite; animation-delay: 1s; }
+  .anim-signal-ring-3 { animation: signal-radiate 3s ease-out infinite; animation-delay: 2s; }
+  .anim-pulse-broaden { animation: pulse-broaden 4s ease-out infinite; transform-origin: center; }
+  .anim-dash-flow { animation: dash-flow 2s linear infinite; }
+  .anim-spin { animation: spin-slow 20s linear infinite; }
+  .anim-mode-1 { animation: mode-pulse 3s ease-in-out infinite; }
+  .anim-mode-2 { animation: mode-pulse 3s ease-in-out infinite; animation-delay: 1s; }
+  .anim-mode-3 { animation: mode-pulse 3s ease-in-out infinite; animation-delay: 2s; }
+  .anim-float { animation: float-gentle 4s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anim-pulse-dot,.anim-wave-drift,.anim-signal-ring-1,.anim-signal-ring-2,.anim-signal-ring-3,
+    .anim-pulse-broaden,.anim-dash-flow,.anim-spin,.anim-mode-1,.anim-mode-2,.anim-mode-3,.anim-float { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="const h=document.documentElement; h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark')">Toggle theme</button>
+
+<main>
+
+<!-- ==================== HOME ==================== -->
+<div class="page-break-label">/ — Home</div>
+<h1>Hi, I am <em style="color:var(--accent-color)">Gianluca Marcon</em>.</h1>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 80" fill="none">
+    <circle cx="200" cy="40" r="4" class="fill-accent"/>
+    <circle cx="200" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite"/>
+    <circle cx="200" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:1s"/>
+    <circle cx="200" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:2s"/>
+  </svg>
+  <div class="graphic-label">Point source &mdash; expanding wavefronts</div>
+</div>
+
+<p>Welcome to my personal website. I'm mainly interested in <em>photonics</em> and <em>optics</em>, but also love <em>algorithms</em>, <em>software engineering</em> and <em>deep-tech</em>.</p>
+
+
+<!-- ==================== RESUME ==================== -->
+<div class="page-break"></div>
+<div class="page-break-label">/resume/ &mdash; R&eacute;sum&eacute;</div>
+<h1>R&eacute;sum&eacute;</h1>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 80" fill="none">
+    <!-- Gaussian envelope -->
+    <path d="M20,40 C60,40 80,15 200,15 C320,15 340,40 380,40 L380,40 C340,40 320,65 200,65 C80,65 60,40 20,40 Z" fill="var(--accent-color)" opacity="0.08"/>
+    <!-- Carrier wave -->
+    <path d="M20,40 Q30,25 40,40 T60,40 T80,40 T100,40 T120,40 T140,40 T160,40 T180,40 T200,40 T220,40 T240,40 T260,40 T280,40 T300,40 T320,40 T340,40 T360,40 T380,40" class="stroke-accent" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <!-- Milestone dots -->
+    <circle cx="60" cy="25" r="3.5" class="fill-accent" style="animation:pulse-glow 2.5s ease-in-out infinite; animation-delay:0.5s"/>
+    <circle cx="140" cy="25" r="3.5" class="fill-accent" style="animation:pulse-glow 2.5s ease-in-out infinite; animation-delay:1.2s"/>
+    <circle cx="220" cy="25" r="3.5" class="fill-accent" style="animation:pulse-glow 2.5s ease-in-out infinite; animation-delay:1.9s"/>
+    <circle cx="300" cy="25" r="3.5" class="fill-accent" style="animation:pulse-glow 2.5s ease-in-out infinite; animation-delay:2.6s"/>
+  </svg>
+  <div class="graphic-label">Wave packet &mdash; propagating career phases</div>
+</div>
+
+<p><a href="#">Contact</a> me for a detailed cv.</p>
+
+
+<!-- ==================== PUBLICATIONS ==================== -->
+<div class="page-break"></div>
+<div class="page-break-label">/publications/ &mdash; Publications</div>
+<h1>Publications</h1>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 120" fill="none">
+    <!-- Incoming wave train -->
+    <path d="M20,60 Q25,48 30,60 T40,60 T50,60 T60,60 T70,60 T80,60 T90,60 T100,60 T110,60 T120,60 T130,60 T140,60 T150,60 T160,60 T170,60" class="stroke-accent" stroke-width="1.5" opacity="0.8"/>
+    <!-- Molecule node -->
+    <circle cx="200" cy="60" r="5" class="fill-accent" style="animation:pulse-glow 2s ease-in-out infinite"/>
+    <!-- Radial spring lines -->
+    <line x1="200" y1="60" x2="192" y2="52" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="208" y2="52" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="192" y2="68" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="208" y2="68" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="196" y2="50" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="204" y2="50" class="stroke-muted" stroke-width="0.8"/>
+    <!-- Rayleigh (straight through) -->
+    <path d="M220,60 Q225,48 230,60 T240,60 T250,60 T260,60 T270,60 T280,60 T290,60 T300,60 T310,60 T320,60 T330,60 T340,60 T350,60 T360,60 T370,60 T380,60" class="stroke-accent" stroke-width="1.5" opacity="0.6"/>
+    <!-- Anti-Stokes (shorter wavelength, upward) -->
+    <g transform="translate(200,60) rotate(-35)">
+      <path d="M10,0 Q15,-8 20,0 T30,0 T40,0 T50,0 T60,0 T70,0 T80,0 T90,0 T100,0 T110,0" class="stroke-accent" stroke-width="1.5" opacity="0.7"/>
+    </g>
+    <!-- Stokes (longer wavelength, downward) -->
+    <g transform="translate(200,60) rotate(35)">
+      <path d="M15,0 Q22,-12 30,0 T45,0 T60,0 T75,0 T90,0 T105,0 T120,0" class="stroke-accent" stroke-width="1.5" opacity="0.7"/>
+    </g>
+    <!-- Labels -->
+    <text x="105" y="85" font-size="8" fill="var(--color-muted)" font-family="sans-serif" text-anchor="middle">Rayleigh</text>
+    <text x="280" y="30" font-size="8" fill="var(--color-muted)" font-family="sans-serif" text-anchor="middle">Anti-Stokes</text>
+    <text x="280" y="100" font-size="8" fill="var(--color-muted)" font-family="sans-serif" text-anchor="middle">Stokes</text>
+  </svg>
+  <div class="graphic-label">Raman scattering &mdash; incoming photon, outgoing wavelengths</div>
+</div>
+
+<p>PhD thesis: <a href="#">Nonlinear propagation and effects in few-mode fibers</a></p>
+<p>MSc thesis: <a href="#">Design of real-time optical coherence tomography</a></p>
+
+
+<!-- ==================== CONTACTS ==================== -->
+<div class="page-break"></div>
+<div class="page-break-label">/contacts/ &mdash; Contacts</div>
+<h1>Contacts</h1>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 80" fill="none">
+    <circle cx="100" cy="40" r="4" class="fill-accent"/>
+    <circle cx="300" cy="40" r="4" class="fill-accent"/>
+    <circle cx="100" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite"/>
+    <circle cx="100" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:1s"/>
+    <circle cx="100" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:2s"/>
+    <circle cx="300" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite"/>
+    <circle cx="300" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:1s"/>
+    <circle cx="300" cy="40" r="4" class="stroke-muted" stroke-width="1" fill="none" opacity="0.3" style="animation:signal-radiate 3s ease-out infinite; animation-delay:2s"/>
+    <!-- Central constructive interference arc -->
+    <path d="M160,40 Q200,20 240,40" class="stroke-accent" stroke-width="1.5" opacity="0.5" fill="none"/>
+  </svg>
+  <div class="graphic-label">Two sources &mdash; constructive interference at center</div>
+</div>
+
+<div style="text-align:center; margin-top:2rem;">
+  marcon.gluca[at]gmail.com &middot; <a href="#">GitHub</a> &middot; <a href="#">LinkedIn</a>
+</div>
+
+
+<!-- ==================== NOTES ==================== -->
+<div class="page-break"></div>
+<div class="page-break-label">/notes/ &mdash; Notes</div>
+<h1>Notes</h1>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 50" fill="none">
+    <path d="M20,25 Q30,5 40,25 T60,25 T80,25 T100,25 T120,25 T140,25 T160,25 T180,25 T200,25 T220,25 T240,25 T260,25 T280,25 T300,25 T320,25 T340,25 T360,25 T380,25" class="stroke-accent" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+  <div class="graphic-label">Standing wave &mdash; minimal divider</div>
+</div>
+
+<p>No posts yet. Check back soon!</p>
+
+
+<!-- ==================== PROJECTS ==================== -->
+<div class="page-break"></div>
+<div class="page-break-label">/projects/ &mdash; Projects</div>
+<h1>Projects</h1>
+<p>Here is a compilation of my personal projects, created for various reasons, whether for enjoyment, academic pursuits, or a blend of both.</p>
+
+<hr>
+
+<h2>Numerical solver for space-division-multiplexed optical fiber transmission</h2>
+
+<div class="graphic inline-r">
+  <svg viewBox="0 0 120 120" fill="none">
+    <circle cx="60" cy="60" r="45" class="stroke-muted" stroke-width="1" opacity="0.5"/>
+    <!-- Vector field arrows in vortex pattern -->
+    <g style="transform-origin:60px 60px; animation:spin-slow 20s linear infinite">
+      <g transform="translate(60,60)">
+        <!-- 8 arrows at radius 28, tangential -->
+        <g transform="rotate(0)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(45)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(90)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(135)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(180)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(225)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(270)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+        <g transform="rotate(315)"><line x1="0" y1="-28" x2="0" y2="-18" class="stroke-accent" stroke-width="1.5"/><polygon points="-3,-20 0,-15 3,-20" class="fill-accent"/></g>
+      </g>
+    </g>
+    <circle cx="60" cy="60" r="3" class="fill-accent"/>
+  </svg>
+  <div class="graphic-label">Vector field mode profile</div>
+</div>
+
+<p>Project done for my PhD program involving the simulation of light transmission in <a href="#">few-mode optical fibers</a> under the effect of <a href="#">optical nonlinearities</a>, namely Kerr and Raman amplification.</p>
+
+<hr>
+
+<h2>PyNLIN</h2>
+
+<div class="graphic wide">
+  <svg viewBox="0 0 400 80" fill="none">
+    <line x1="20" y1="65" x2="380" y2="65" class="stroke-muted" stroke-width="1" opacity="0.3"/>
+    <path d="M40,65 C50,65 55,25 60,25 C65,25 70,65 80,65" class="stroke-accent" stroke-width="1.5" style="transform-origin:60px 65px; animation:pulse-propagate 5s ease-out infinite"/>
+  </svg>
+  <div class="graphic-label">Pulse propagation &mdash; broadening and fading</div>
+</div>
+
+<p>A pure Python implementation of some mathematical models for the computation of the nonlinear interference noise accumulating during the transmission of light in optical fibers.</p>
+
+<hr>
+
+<h2>LastTip</h2>
+
+<div class="graphic inline-l">
+  <svg viewBox="0 0 120 80" fill="none">
+    <g style="animation:wave-drift 8s linear infinite">
+      <path d="M0,40 Q10,15 20,40 T40,40 T60,40 T80,40 T100,40 T120,40 T140,40" class="stroke-accent" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    </g>
+    <g style="animation:wave-drift 8s linear infinite; animation-delay:2s; opacity:0.4">
+      <path d="M0,40 Q10,20 20,40 T40,40 T60,40 T80,40 T100,40 T120,40 T140,40" class="stroke-accent" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="graphic-label">Audio waveform</div>
+</div>
+
+<p>This is a fun little project that was born with me realizing that the music obsessed person that I once was has been replaced by the Spotify algorithm. I built a small application that connects to my last.fm and spotify libraries to get some music recommendations.</p>
+
+<hr>
+
+<h2>Convolutional and Turbo Codes for deep-space communications</h2>
+
+<div class="graphic inline-r">
+  <svg viewBox="10 0 100 70" fill="none">
+    <g transform="rotate(18, 60, 20)">
+      <!-- Satellite body -->
+      <rect x="52" y="8" width="16" height="10" rx="2" class="stroke-accent" stroke-width="1.5"/>
+      <rect x="34" y="10" width="14" height="6" class="stroke-accent" stroke-width="1"/>
+      <rect x="72" y="10" width="14" height="6" class="stroke-accent" stroke-width="1"/>
+      <circle cx="60" cy="22" r="2" class="fill-accent"/>
+      <!-- Directional wavefronts (90° FOV downward) -->
+      <path d="M70,35 A 14,14 0 0,1 50,35" class="stroke-accent" stroke-width="1.5" opacity="0.3" style="animation:mode-pulse 3s ease-in-out infinite"/>
+      <path d="M80,45 A 28,28 0 0,1 40,45" class="stroke-accent" stroke-width="1.5" opacity="0.3" style="animation:mode-pulse 3s ease-in-out infinite; animation-delay:1s"/>
+      <path d="M90,55 A 42,42 0 0,1 30,55" class="stroke-accent" stroke-width="1.5" opacity="0.3" style="animation:mode-pulse 3s ease-in-out infinite; animation-delay:2s"/>
+    </g>
+  </svg>
+  <div class="graphic-label">Satellite directional beam</div>
+</div>
+
+<p>A C implementation of the <a href="#">CCSDS</a> standard for <a href="#">Turbo Codes</a>, a class of high-performance error-correction codes used in deep-space communications.</p>
+
+<hr>
+
+<h2>Wireless MAC protocols simulator</h2>
+
+<div class="graphic inline-l">
+  <svg viewBox="0 0 120 100" fill="none">
+    <!-- Links -->
+    <line x1="22" y1="32" x2="92" y2="18" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="22" y1="32" x2="58" y2="58" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="22" y1="32" x2="18" y2="76" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="92" y1="18" x2="58" y2="58" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="92" y1="18" x2="88" y2="72" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="58" y1="58" x2="18" y2="76" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="58" y1="58" x2="88" y2="72" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <line x1="18" y1="76" x2="88" y2="72" class="stroke-muted" stroke-width="0.8" opacity="0.4"/>
+    <!-- Node 1 -->
+    <circle cx="22" cy="32" r="2.5" class="fill-accent"/>
+    <circle cx="22" cy="32" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite"/>
+    <circle cx="22" cy="32" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:1.2s"/>
+    <!-- Node 2 -->
+    <circle cx="92" cy="18" r="2.5" class="fill-accent"/>
+    <circle cx="92" cy="18" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:0.6s"/>
+    <circle cx="92" cy="18" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:1.8s"/>
+    <!-- Node 3 -->
+    <circle cx="58" cy="58" r="2.5" class="fill-accent"/>
+    <circle cx="58" cy="58" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:0.3s"/>
+    <circle cx="58" cy="58" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:1.5s"/>
+    <!-- Node 4 -->
+    <circle cx="18" cy="76" r="2.5" class="fill-accent"/>
+    <circle cx="18" cy="76" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:0.9s"/>
+    <circle cx="18" cy="76" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:2.1s"/>
+    <!-- Node 5 -->
+    <circle cx="88" cy="72" r="2.5" class="fill-accent"/>
+    <circle cx="88" cy="72" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:0.0s"/>
+    <circle cx="88" cy="72" r="3" class="stroke-accent" stroke-width="1" fill="none" opacity="0.5" style="animation:signal-radiate 2.5s ease-out infinite; animation-delay:1.0s"/>
+  </svg>
+  <div class="graphic-label">Wireless network mesh (5 nodes)</div>
+</div>
+
+<p>The scope of this project is to compare different channel access policies in wireless networks. It consists of a discrete-event network simulator written in Java that simulates a wireless channel with a given number of transmitters/receivers.</p>
+
+</main>
+</body>
+</html>
