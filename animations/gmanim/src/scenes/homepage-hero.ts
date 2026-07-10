@@ -6,7 +6,6 @@ import {
   FadeOut,
   GrowFromCenter,
   AnimationGroup,
-  Wait,
 } from 'manim-web';
 
 export async function homepageHero(scene: Scene) {
@@ -15,7 +14,7 @@ export async function homepageHero(scene: Scene) {
 
   // Set background based on theme
   const bgColor = theme === 'light' ? '#ffffff' : '#0d1117';
-  scene.view.style.backgroundColor = bgColor;
+  scene.renderer.getCanvas().style.backgroundColor = bgColor;
 
   const dot = new Dot({ radius: 0.08 });
   await scene.play(new Create(dot));
@@ -32,24 +31,22 @@ export async function homepageHero(scene: Scene) {
 
   // Loop the animation
   while (true) {
-    const anims = circles.map((c) => new GrowFromCenter(c));
-    const fadeOuts = circles.map((c) => new FadeOut(c));
+    const anims = circles.map((c) => new GrowFromCenter(c, { duration: 2 }));
+    const fadeOuts = circles.map((c) => new FadeOut(c, { duration: 1 }));
 
     await scene.play(
       new AnimationGroup(anims, {
         lagRatio: 0.3,
-        runTime: 2,
       })
     );
 
     await scene.play(
       new AnimationGroup(fadeOuts, {
         lagRatio: 0,
-        runTime: 1,
       })
     );
 
     // Small pause before next cycle
-    await scene.play(new Wait(0.5));
+    await scene.wait(0.5);
   }
 }

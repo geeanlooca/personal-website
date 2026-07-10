@@ -375,3 +375,184 @@ article > p:has(strong:first-child) {
 cite {
   hyphens: none;
 }
+
+/* --- Graphics --- */
+.graphic {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+}
+
+.graphic.wide {
+  max-width: 520px;
+}
+
+.graphic.inline-r {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  width: 140px;
+}
+
+.graphic.inline-l {
+  float: left;
+  margin: 0 1.5rem 1rem 0;
+  width: 140px;
+}
+
+.graphic svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graphic .stroke-accent {
+  stroke: var(--accent-color);
+}
+
+.graphic .stroke-muted {
+  stroke: var(--color-muted);
+}
+
+.graphic .fill-accent {
+  fill: var(--accent-color);
+}
+
+.graphic .fill-muted {
+  fill: var(--color-muted);
+}
+
+.graphic-label {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.4rem;
+  text-align: center;
+  font-family: -apple-system, system-ui, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .graphic.inline-r,
+  .graphic.inline-l {
+    float: none;
+    margin: 1.5rem auto;
+    width: 180px;
+  }
+}
+
+/* --- Animations --- */
+@keyframes signal-radiate {
+  0% { r: 4; opacity: 0.9; }
+  100% { r: 28; opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; r: 3; }
+  50% { opacity: 1; r: 5; }
+}
+
+@keyframes wave-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-40px); }
+}
+
+@keyframes pulse-broaden {
+  0% { transform: scaleX(0.3); opacity: 0.8; }
+  50% { transform: scaleX(1.5); opacity: 0.3; }
+  100% { transform: scaleX(3); opacity: 0; }
+}
+
+@keyframes dash-flow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -20; }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mode-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes pulse-propagate {
+  0% { transform: translateX(0) scaleX(1); opacity: 0.9; }
+  100% { transform: translateX(280px) scaleX(4); opacity: 0; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.anim-pulse-dot {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.anim-wave-drift {
+  animation: wave-drift 6s linear infinite;
+}
+
+.anim-signal-ring-1 {
+  animation: signal-radiate 3s ease-out infinite;
+}
+
+.anim-signal-ring-2 {
+  animation: signal-radiate 3s ease-out infinite;
+  animation-delay: 1s;
+}
+
+.anim-signal-ring-3 {
+  animation: signal-radiate 3s ease-out infinite;
+  animation-delay: 2s;
+}
+
+.anim-pulse-broaden {
+  animation: pulse-broaden 4s ease-out infinite;
+  transform-origin: center;
+}
+
+.anim-dash-flow {
+  animation: dash-flow 2s linear infinite;
+}
+
+.anim-spin {
+  animation: spin-slow 20s linear infinite;
+}
+
+.anim-mode-1 {
+  animation: mode-pulse 3s ease-in-out infinite;
+}
+
+.anim-mode-2 {
+  animation: mode-pulse 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.anim-mode-3 {
+  animation: mode-pulse 3s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.anim-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-pulse-dot,
+  .anim-wave-drift,
+  .anim-signal-ring-1,
+  .anim-signal-ring-2,
+  .anim-signal-ring-3,
+  .anim-pulse-broaden,
+  .anim-dash-flow,
+  .anim-spin,
+  .anim-mode-1,
+  .anim-mode-2,
+  .anim-mode-3,
+  .anim-float {
+    animation: none !important;
+  }
+}

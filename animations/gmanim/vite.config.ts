@@ -8,6 +8,7 @@ const pages = {
 };
 
 export default defineConfig({
+  base: '/animations/',
   build: {
     rollupOptions: {
       input: pages,

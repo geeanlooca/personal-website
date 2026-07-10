@@ -8,6 +8,26 @@ permalink: "/publications/"
 
 
 
+<div class="graphic wide">
+  <svg viewBox="0 0 400 120" fill="none">
+    <path d="M20,60 Q25,48 30,60 T40,60 T50,60 T60,60 T70,60 T80,60 T90,60 T100,60 T110,60 T120,60 T130,60 T140,60 T150,60 T160,60 T170,60" class="stroke-accent" stroke-width="1.5" opacity="0.8"/>
+    <circle cx="200" cy="60" r="5" class="fill-accent" style="animation:pulse-glow 2s ease-in-out infinite"/>
+    <line x1="200" y1="60" x2="192" y2="52" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="208" y2="52" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="192" y2="68" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="208" y2="68" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="196" y2="50" class="stroke-muted" stroke-width="0.8"/>
+    <line x1="200" y1="60" x2="204" y2="50" class="stroke-muted" stroke-width="0.8"/>
+    <path d="M220,60 Q225,48 230,60 T240,60 T250,60 T260,60 T270,60 T280,60 T290,60 T300,60 T310,60 T320,60 T330,60 T340,60 T350,60 T360,60 T370,60 T380,60" class="stroke-accent" stroke-width="1.5" opacity="0.6"/>
+    <g transform="translate(200,60) rotate(-35)">
+      <path d="M10,0 Q15,-8 20,0 T30,0 T40,0 T50,0 T60,0 T70,0 T80,0 T90,0 T100,0 T110,0" class="stroke-accent" stroke-width="1.5" opacity="0.7"/>
+    </g>
+    <g transform="translate(200,60) rotate(35)">
+      <path d="M15,0 Q22,-12 30,0 T45,0 T60,0 T75,0 T90,0 T105,0 T120,0" class="stroke-accent" stroke-width="1.5" opacity="0.7"/>
+    </g>
+  </svg>
+</div>
+
 # Theses
 
 PhD thesis: [Nonlinear propagation and effects in few-mode fibers](https://www.research.unipd.it/handle/11577/3444338)
