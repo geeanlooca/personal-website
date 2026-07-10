@@ -31,7 +31,14 @@
     const container = document.getElementById('container');
     const options = { width: 400, height: 80 };
     const scene = new Scene(container, options);
-    homepageHero(scene);
+    
+    (async () => {
+      try {
+        await homepageHero(scene);
+      } catch (err) {
+        console.error('Animation error:', err);
+      }
+    })();
   </script>
 </body>
 </html>

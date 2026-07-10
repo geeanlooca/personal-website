@@ -8,7 +8,7 @@ const pages = {
 };
 
 export default defineConfig({
-  base: '/animations/',
+  base: '',
   build: {
     rollupOptions: {
       input: pages,
@@ -49,6 +49,13 @@ export default defineConfig({
         if (fs.existsSync(oldPath)) {
           fs.mkdirSync(newDir, { recursive: true });
           fs.renameSync(oldPath, newPath);
+
+          // Fix relative asset paths in the moved HTML
+          let html = fs.readFileSync(newPath, 'utf-8');
+          // Replace paths like ../../../homepage-hero/assets/ with ./assets/
+          html = html.replace(/src="[^"]*\/homepage-hero\/assets\//g, 'src="./assets/');
+          html = html.replace(/href="[^"]*\/homepage-hero\/assets\//g, 'href="./assets/');
+          fs.writeFileSync(newPath, html);
 
           // Clean up empty directories
           let dir = path.dirname(oldPath);

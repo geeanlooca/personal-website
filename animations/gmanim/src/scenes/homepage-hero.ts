@@ -14,7 +14,7 @@ export async function homepageHero(scene: Scene) {
 
   // Set background based on theme
   const bgColor = theme === 'light' ? '#ffffff' : '#0d1117';
-  scene.renderer.getCanvas().style.backgroundColor = bgColor;
+  scene.renderer.backgroundColor = bgColor;
 
   const dot = new Dot({ radius: 0.08 });
   await scene.play(new Create(dot));
