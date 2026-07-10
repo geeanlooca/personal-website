@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage Hero Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+    #container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="module">
+    import { Scene } from 'manim-web';
+    import { homepageHero } from '../scenes/homepage-hero.ts';
+
+    const container = document.getElementById('container');
+    const options = { width: 400, height: 80 };
+    const scene = new Scene(container, options);
+    homepageHero(scene);
+  </script>
+</body>
+</html>
