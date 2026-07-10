@@ -1,8 +1,7 @@
 {
   "name": "eleventy-site",
   "version": "1.0.0",
-  "description": "```bash npm init -y npm install @11ty/eleventy --save-dev ```",
-  "main": "index.js",
+  "description": "Gianluca Marcon's personal website, built with Eleventy, Nunjucks, and Markdown.",
   "scripts": {
     "build": "eleventy",
     "start": "eleventy --serve"
@@ -10,11 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+  "engines": {
+    "node": ">=20"
   },
-  "dependencies": {
-    "axios": "^1.6.2"
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
   },
   "repository": {
     "type": "git",
