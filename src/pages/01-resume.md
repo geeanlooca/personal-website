@@ -10,7 +10,7 @@ permalink: "/resume/"
 
 # Experience
 
-- **Sep. 2024 - Current**: Signal Intelligence Project Engineer, *QASCOM*, Vicenza, Italy
+- **Sep. 2024 - Current**: Senior Signal Intelligence Project Engineer, *QASCOM*, Vicenza, Italy
 - **Apr. 2022 - Aug. 2024**: R&D Engineer, *Visia Imaging - Topcon group*, Arezzo, Italy
 - **Oct. 2021 - Mar. 2022**: Post-doc researcher, *University of Padova*, Italy
 - **May 2021 - Aug. 2021**: Visiting researcher, *University of Bern*, Switzerland
