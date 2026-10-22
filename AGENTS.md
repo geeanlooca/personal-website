@@ -34,19 +34,35 @@ src/
   notes/
     notes.json          Directory data — default layout "post.njk", tags "posts", permalink
 .eleventy.js            Eleventy config (input, output, passthrough, shortcodes)
+Dockerfile              Multi-stage image: build site, serve with nginx
+deploy/nginx.conf       nginx configuration for the container
 .github/workflows/
   build-and-deploy.yml  CI/CD: build + SCP deploy on push to main
+  docker.yml            Build and push the container image to GHCR
 oc-box/                 OpenCode AI Docker dev environment (separate from the site)
 ```
 
 ## Common commands
 
 ```bash
-npm start          # Dev server with hot reload (eleventy --serve)
-npm run build      # Production build to public/
+npm start                                        # Dev server with hot reload
+npm run build                                    # Production build to public/
+docker build -t personal-website .               # Build the site image
+docker run --rm -p 8080:8080 personal-website    # Serve it on localhost:8080
 ```
 
 Dependencies are installed with `npm ci`. Node version in CI is 24 (LTS), enforced locally via `.nvmrc` and in `package.json` `engines`.
+
+## Container image
+
+The `Dockerfile` builds `public/` in a `node:24-alpine` stage and serves it with
+`nginxinc/nginx-unprivileged` on port 8080. The image has no bind mounts and
+runs as a non-root user.
+
+`.github/workflows/docker.yml` builds the image on every push and pull request.
+On `main`, it also pushes `:latest` and `:<sha>` tags to
+`ghcr.io/geeanlooca/personal-website`. The image is not deployed yet; the SCP
+workflow still publishes the static site.
 
 ## Layout chain
 
