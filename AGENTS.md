@@ -37,8 +37,7 @@ src/
 Dockerfile              Multi-stage image: build site, serve with nginx
 deploy/nginx.conf       nginx configuration for the container
 .github/workflows/
-  build-and-deploy.yml  CI/CD: build + SCP deploy on push to main
-  docker.yml            Build and push the container image to GHCR
+  docker.yml            Build, smoke-test, and push the image to GHCR
 oc-box/                 OpenCode AI Docker dev environment (separate from the site)
 ```
 
@@ -59,10 +58,10 @@ The `Dockerfile` builds `public/` in a `node:24-alpine` stage and serves it with
 `nginxinc/nginx-unprivileged` on port 8080. The image has no bind mounts and
 runs as a non-root user.
 
-`.github/workflows/docker.yml` builds the image on every push and pull request.
-On `main`, it also pushes `:latest` and `:<sha>` tags to
-`ghcr.io/geeanlooca/personal-website`. The image is not deployed yet; the SCP
-workflow still publishes the static site.
+`.github/workflows/docker.yml` builds and smoke-tests the image on every push
+and pull request. On `main`, it also pushes `:latest` and `:<sha>` tags to
+`ghcr.io/geeanlooca/personal-website`. The package is public, so servers pull it
+without registry credentials.
 
 ## Layout chain
 
@@ -133,17 +132,25 @@ Edit `src/_data/meta.js`. Values are available in all templates as `{{ meta.url 
 
 ## Deployment
 
-Push to `main` triggers the GitHub Actions workflow in `.github/workflows/build-and-deploy.yml`:
+Push to `main` triggers `.github/workflows/docker.yml`:
 
-1. Checkout + install Node 24 (LTS)
-2. `npm ci && npm audit --audit-level=high && npm run build`
-3. SCP `public/` to `~/public_html` on the remote host
+1. Install Node 24 and run `npm ci && npm audit --audit-level=high`.
+2. Build the image and smoke-test it on `http://localhost:8080/`.
+3. Push `:latest` and `:<sha>` to GHCR. Pull requests build only.
 
-Secrets used: `HOST`, `USERNAME`, `PASSWORD` (set in GitHub repo settings).
+The VPS runs the site container behind Caddy and Watchtower:
+
+- Caddy proxies `gianlucamarcon.com` to `personal-website:8080` on the
+  `reverse-proxy` network.
+- Watchtower (`nickfedor/watchtower`) polls GHCR every 5 minutes, pulls the new
+  `latest` digest, and restarts the `personal-website` container.
+- The GHCR package is public, so the VPS needs no registry credentials.
+- The old SCP deploy and its `HOST`, `USERNAME`, and `PASSWORD` secrets are
+  retired.
 
 ## Dependency updates
 
-- `.github/dependabot.yml` checks npm (root and `animations/gmanim`) and GitHub Actions weekly.
+- `.github/dependabot.yml` checks npm (root and `animations/gmanim`), GitHub Actions, and Docker base images weekly.
 - `.github/workflows/security-audit.yml` runs `npm audit` every Monday and on manual dispatch.
 - Enable Dependabot alerts and security updates in repository settings. The config file alone does not enable them.
 - `manim-web` depends on `katex`, which has two low-severity advisories with no non-breaking fix. Accept them until upstream releases a patch.

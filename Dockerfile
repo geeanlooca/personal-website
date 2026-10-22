@@ -10,6 +10,10 @@ RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.31.7-alpine
 
+ARG GIT_SHA=unknown
+LABEL org.opencontainers.image.source="https://github.com/geeanlooca/personal-website" \
+      org.opencontainers.image.revision=$GIT_SHA
+
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/public /usr/share/nginx/html
 
