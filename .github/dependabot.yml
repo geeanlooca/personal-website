@@ -27,3 +27,8 @@ updates:
       directory: "/"
       schedule:
           interval: weekly
+      ignore:
+          # Node LTS versions are even-numbered. Bump the major manually.
+          - dependency-name: "node"
+            update-types:
+                - "version-update:semver-major"
