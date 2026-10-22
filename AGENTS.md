@@ -46,7 +46,7 @@ npm start          # Dev server with hot reload (eleventy --serve)
 npm run build      # Production build to public/
 ```
 
-Dependencies are installed with `npm ci`. Node version in CI is 20 (LTS), enforced locally via `.nvmrc` and in `package.json` `engines`.
+Dependencies are installed with `npm ci`. Node version in CI is 24 (LTS), enforced locally via `.nvmrc` and in `package.json` `engines`.
 
 ## Layout chain
 
@@ -119,8 +119,8 @@ Edit `src/_data/meta.js`. Values are available in all templates as `{{ meta.url 
 
 Push to `main` triggers the GitHub Actions workflow in `.github/workflows/build-and-deploy.yml`:
 
-1. Checkout + install Node 20 (LTS)
-2. `npm ci && npm run build`
+1. Checkout + install Node 24 (LTS)
+2. `npm ci && npm audit --audit-level=high && npm run build`
 3. SCP `public/` to `~/public_html` on the remote host
 
 Secrets used: `HOST`, `USERNAME`, `PASSWORD` (set in GitHub repo settings).
