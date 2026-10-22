@@ -125,6 +125,13 @@ Push to `main` triggers the GitHub Actions workflow in `.github/workflows/build-
 
 Secrets used: `HOST`, `USERNAME`, `PASSWORD` (set in GitHub repo settings).
 
+## Dependency updates
+
+- `.github/dependabot.yml` checks npm (root and `animations/gmanim`) and GitHub Actions weekly.
+- `.github/workflows/security-audit.yml` runs `npm audit` every Monday and on manual dispatch.
+- Enable Dependabot alerts and security updates in repository settings. The config file alone does not enable them.
+- `manim-web` depends on `katex`, which has two low-severity advisories with no non-breaking fix. Accept them until upstream releases a patch.
+
 ## Constraints
 
 - **No TypeScript.** The `package.json` explicitly sets `"type": "commonjs"`.
