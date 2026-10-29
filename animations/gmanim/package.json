@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "manim-web": "^0.3.23"
+    "manim-web": "^0.40.1"
   },
   "devDependencies": {
     "vite": "^6.0.0",
